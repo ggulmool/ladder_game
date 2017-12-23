@@ -17,7 +17,7 @@ public class Ladder {
 
   public int run(int nthOfPerson) {
     for (int i = 0; i < rows.length; i++) {
-      nthOfPerson = rows[i].moveRow(nthOfPerson);
+      nthOfPerson = rows[i].move(nthOfPerson);
     }
     return nthOfPerson;
   }
