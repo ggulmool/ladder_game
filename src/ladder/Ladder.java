@@ -2,33 +2,34 @@ package ladder;
 
 public class Ladder {
 
-  int[] row;
+  int[][] rows;
 
-  public Ladder(int noOfPerson) {
-    row = new int[noOfPerson];
+  public Ladder(int countOfRow, int noOfPerson) {
+    rows = new int[countOfRow][noOfPerson];
   }
 
-  public void drawLine(int startPosition) {
-    row[startPosition] = 1;
-    row[startPosition + 1] = 1;
+  public void drawLine(int noOfRow, int startPosition) {
+    rows[noOfRow][startPosition] = 1;
+    rows[noOfRow][startPosition + 1] = 1;
   }
 
   public int run(int nthOfPerson) {
-    if (row[nthOfPerson] == 0) {
-      return nthOfPerson;
-    }
-
-    if (nthOfPerson - 1 >= 0) {
-      int leftValue = row[nthOfPerson - 1];
-      if (leftValue == 1) {
-        return nthOfPerson - 1;
+    for (int i = 0; i < rows.length; i++) {
+      int[] row = rows[i];
+      if (row[nthOfPerson] == 0) {
+        continue;
       }
-    }
 
-//    int rightValue = row[nthOfPerson + 1];
-//    if (rightValue == 1) {
-//      return nthOfPerson + 1;
-//    }
-    return nthOfPerson + 1;
+      if (nthOfPerson - 1 >= 0) {
+        int leftValue = row[nthOfPerson - 1];
+        if (leftValue == 1) {
+          nthOfPerson -= 1;
+          continue;
+        }
+      }
+
+      nthOfPerson += 1;
+    }
+    return nthOfPerson;
   }
 }
