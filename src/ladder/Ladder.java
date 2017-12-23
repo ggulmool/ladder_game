@@ -2,7 +2,7 @@ package ladder;
 
 public class Ladder {
 
-  private int[] row;
+  int[] row;
 
   public Ladder(int noOfPerson) {
     row = new int[noOfPerson];
@@ -14,21 +14,21 @@ public class Ladder {
   }
 
   public int run(int nthOfPerson) {
-    // 1 1 0
-    if (nthOfPerson - 1 <= 0 && row[nthOfPerson - 1] == 1) {
-      return nthOfPerson + 1;
+    if (row[nthOfPerson] == 0) {
+      return nthOfPerson;
     }
 
-    if (row[nthOfPerson - 1] == 1) {
-      if (row[nthOfPerson - 2] == 1) {
+    if (nthOfPerson - 1 >= 0) {
+      int leftValue = row[nthOfPerson - 1];
+      if (leftValue == 1) {
         return nthOfPerson - 1;
       }
-
-      if (row[nthOfPerson] == 1) {
-        return nthOfPerson + 1;
-      }
     }
 
-    return nthOfPerson;
+//    int rightValue = row[nthOfPerson + 1];
+//    if (rightValue == 1) {
+//      return nthOfPerson + 1;
+//    }
+    return nthOfPerson + 1;
   }
 }
