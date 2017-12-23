@@ -1,8 +1,8 @@
 package ladder;
 
-public class Row {
+class Row {
 
-  enum Direction {
+  private enum Direction {
     LEFT(-1),
     CENTER(0),
     RIGHT(1);
@@ -13,7 +13,7 @@ public class Row {
       this.no = no;
     }
 
-    public int getNo() {
+    int getNo() {
       return no;
     }
   }
