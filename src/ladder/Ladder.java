@@ -2,7 +2,7 @@ package ladder;
 
 public class Ladder {
 
-  Row[] rows;
+  private Row[] rows;
 
   public Ladder(int countOfRow, int noOfPerson) {
     rows = new Row[countOfRow];
