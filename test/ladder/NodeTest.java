@@ -40,4 +40,15 @@ public class NodeTest extends TestCase {
     Marker marker = node.move(new Marker(3));
     assertEquals(new Marker(3), marker);
   }
+
+  public void testSymbol() {
+    Node node = Node.createCenterNode();
+    StringBuilder sb = new StringBuilder();
+    node.appendSymbol(sb);
+    assertEquals("0", sb.toString());
+//    node = Node.createLeftNode();
+//    assertEquals(-1, node.getSymbol());
+//    node = Node.createRightNode();
+//    assertEquals(1, node.getSymbol());
+  }
 }

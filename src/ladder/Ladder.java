@@ -36,27 +36,11 @@ class Ladder {
     return nthOfPerson;
   }
 
-  public static String generate(Row[] rows, NaturalNumber height, NaturalNumber nthOfPerson) {
+  static String generate(Row[] rows, NaturalNumber height, NaturalNumber nthOfPerson) {
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < rows.length; i++) {
       Row row = rows[i];
-      Node[] nodes = row.getNodes();
-      for (int j = 0; j < nodes.length; j++) {
-        Node node = nodes[j];
-        if (node.equals(Node.createCenterNode())) {
-          sb.append("0");
-        } else if (node.equals(Node.createLeftNode())) {
-          sb.append("-1");
-        } else {
-          sb.append("1");
-        }
-
-        if (height.toArrayIndex() == i && nthOfPerson.toArrayIndex() == j) {
-          sb.append("*");
-        }
-        sb.append(" ");
-      }
-      sb.append("\n");
+      row.generateRow(sb, i, height, nthOfPerson);
     }
 
     return sb.toString();

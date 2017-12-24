@@ -38,4 +38,17 @@ class Row {
   public Node[] getNodes() {
     return this.nodes;
   }
+
+  void generateRow(StringBuilder sb, int currentHeight, NaturalNumber height, NaturalNumber nthOfPerson) {
+    for (int j = 0; j < nodes.length; j++) {
+      Node node = nodes[j];
+      //sb.append(node.getSymbol());
+      node.appendSymbol(sb);
+      if (height.toArrayIndex() == currentHeight && nthOfPerson.toArrayIndex() == j) {
+        sb.append("*");
+      }
+      sb.append(" ");
+    }
+    sb.append("\n");
+  }
 }

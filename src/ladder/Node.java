@@ -5,7 +5,12 @@ import java.util.Objects;
 public class Node {
 
   enum Direction {
-    LEFT, CENTER, RIGHT
+    LEFT(-1), CENTER(0), RIGHT(1);
+    private int symbol;
+
+    private Direction(int symbol) {
+      this.symbol = symbol;
+    }
   }
 
   private Direction direction;
@@ -32,6 +37,10 @@ public class Node {
 
   boolean isLeftDirection() {
     return direction == Direction.LEFT;
+  }
+
+  void appendSymbol(StringBuilder builder) {
+    builder.append(direction.symbol);
   }
 
   Marker move(Marker marker) {
