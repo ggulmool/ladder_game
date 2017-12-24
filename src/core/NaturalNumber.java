@@ -1,23 +1,23 @@
-package ladder;
+package core;
 
 import java.util.Objects;
 
-class NaturalNumber {
+public class NaturalNumber {
 
   private int number;
 
-  NaturalNumber(int number) {
+  public NaturalNumber(int number) {
     if (number < 1) {
       throw new IllegalArgumentException(String.format("자연수는 1 이상이어야 합니다. 현재 값은 : %d", number));
     }
     this.number = number;
   }
 
-  int getNumber() {
+  public int getNumber() {
     return this.number;
   }
 
-  int toArrayIndex() {
+  public int toArrayIndex() {
     return this.number - 1;
   }
 

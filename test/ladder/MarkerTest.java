@@ -2,7 +2,7 @@ package ladder;
 
 import junit.framework.TestCase;
 
-public class MarkerTest extends TestCase{
+public class MarkerTest extends TestCase {
 
   public void testMoveRight() {
     Marker marker = new Marker(3);

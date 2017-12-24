@@ -1,5 +1,6 @@
 package ladder;
 
+import core.NaturalNumber;
 import junit.framework.TestCase;
 
 public class RowTest extends TestCase {
