@@ -2,11 +2,10 @@ package ladder;
 
 import core.NaturalNumber;
 
-class LadderCreator {
-
+class RandomLadderCreator {
   private Row[] rows;
 
-  LadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+  RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
     rows = new Row[height.getNumber()];
 
     for (int i = 0; i < height.getNumber(); i++) {

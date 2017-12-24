@@ -5,7 +5,7 @@ import core.NaturalNumber;
 class Row {
   private Node[] nodes;
 
-  public Row(NaturalNumber noOfPerson) {
+  Row(NaturalNumber noOfPerson) {
     nodes = new Node[noOfPerson.getNumber()];
     for (int i = 0; i < nodes.length; i++) {
       nodes[i] = Node.createCenterNode();
