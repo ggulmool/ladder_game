@@ -3,17 +3,6 @@ package ladder;
 import junit.framework.TestCase;
 
 public class LadderTest extends TestCase {
-
-  public void testNoOfHeight() {
-    try {
-      new Ladder(new NaturalNumber(0), new NaturalNumber(4));
-      fail("IllegalArgumentException 에러가 발생해야 한다.");
-    } catch (IllegalArgumentException e) {
-      System.out.println(e.getMessage());
-      assertTrue(true);
-    }
-  }
-
   public void testHeightWhenOvernoOfRows() {
     try {
       Ladder ladder = new Ladder(new NaturalNumber(2), new NaturalNumber(1));
@@ -34,9 +23,9 @@ public class LadderTest extends TestCase {
     ladder.drawLine(new NaturalNumber(2), new NaturalNumber(2));
     ladder.drawLine(new NaturalNumber(3), new NaturalNumber(3));
 
-    assertEquals(3, ladder.run(0));
-    assertEquals(0, ladder.run(1));
-    assertEquals(1, ladder.run(2));
-    assertEquals(2, ladder.run(3));
+    assertEquals(new Marker(4), ladder.run(new Marker(1)));
+    assertEquals(new Marker(1), ladder.run(new Marker(2)));
+    assertEquals(new Marker(2), ladder.run(new Marker(3)));
+    assertEquals(new Marker(3), ladder.run(new Marker(4)));
   }
 }

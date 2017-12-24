@@ -21,11 +21,11 @@ class Ladder {
     rows[heightIndex].drawLine(startPosition);
   }
 
-  int run(int nthOfPerson) {
+  Marker run(Marker nthOfPerson) {
     for (int i = 0; i < rows.length; i++) {
-      nthOfPerson = rows[i].move(nthOfPerson);
+      Row row = rows[i];
+      nthOfPerson = row.move(nthOfPerson);
     }
-
     return nthOfPerson;
   }
 }
