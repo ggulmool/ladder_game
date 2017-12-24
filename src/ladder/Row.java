@@ -35,18 +35,19 @@ class Row {
     return nodes[marker.toArrayIndex()].move(marker);
   }
 
-  public Node[] getNodes() {
-    return this.nodes;
-  }
+//  public Node[] getNodes() {
+//    return this.nodes;
+//  }
 
-  void generateRow(StringBuilder sb, int currentHeight, NaturalNumber height, NaturalNumber nthOfPerson) {
+  void generateRow(StringBuilder sb, int currentHeight, Position position) {
     for (int j = 0; j < nodes.length; j++) {
       Node node = nodes[j];
-      //sb.append(node.getSymbol());
       node.appendSymbol(sb);
-      if (height.toArrayIndex() == currentHeight && nthOfPerson.toArrayIndex() == j) {
+
+      if (position.equals(Position.createFromArrayIndex(currentHeight, j))) {
         sb.append("*");
       }
+
       sb.append(" ");
     }
     sb.append("\n");
