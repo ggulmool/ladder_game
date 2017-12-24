@@ -26,7 +26,6 @@ public class RowTest extends TestCase {
       row.drawLine(new NaturalNumber(2));
       fail("IllegalArgumentException 에러가 발생해야 한다.");
     } catch (IllegalArgumentException e) {
-      System.out.println(e.getMessage());
       assertTrue(true);
     }
   }

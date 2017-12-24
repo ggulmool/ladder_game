@@ -34,4 +34,8 @@ class Row {
   Marker move(Marker marker) {
     return nodes[marker.toArrayIndex()].move(marker);
   }
+
+  public Node[] getNodes() {
+    return this.nodes;
+  }
 }
