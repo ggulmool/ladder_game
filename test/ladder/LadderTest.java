@@ -9,7 +9,6 @@ public class LadderTest extends TestCase {
       ladder.drawLine(new NaturalNumber(4), new NaturalNumber(4));
       fail("IllegalArgumentException 에러가 발생해야 한다.");
     } catch (IllegalArgumentException e) {
-      System.out.println(e.getMessage());
       assertTrue(true);
     }
   }

@@ -14,7 +14,6 @@ public class NaturalNumberTest extends TestCase {
       NaturalNumber number = new NaturalNumber(0);
       fail("IllegalArgumentException 에러가 발생해야 한다.");
     } catch (IllegalArgumentException e) {
-      System.out.println(e.getMessage());
       assertTrue(true);
     }
   }
