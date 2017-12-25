@@ -22,6 +22,10 @@ public class NaturalNumber {
     return this.number - INTERVAL;
   }
 
+  public NaturalNumber multiply(NaturalNumber operand) {
+    return new NaturalNumber(this.number * operand.number);
+  }
+
   public static NaturalNumber createFromArrayIndex(int index) {
     return new NaturalNumber(index + INTERVAL);
   }
@@ -41,5 +45,10 @@ public class NaturalNumber {
   @Override
   public int hashCode() {
     return Objects.hash(number);
+  }
+
+  @Override
+  public String toString() {
+    return number + "";
   }
 }

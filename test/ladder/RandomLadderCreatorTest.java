@@ -1,32 +1,38 @@
 package ladder;
 
-import java.util.Random;
+import core.NaturalNumber;
 import junit.framework.TestCase;
 
 public class RandomLadderCreatorTest extends TestCase {
 
   public void testGenerateStartPositions() {
-    for (int i = 0; i < 10; i++) {
-      System.out.println(randInt(1, 20));
+    RandomLadderCreator creator = new RandomLadderCreator(new NaturalNumber(3), new NaturalNumber(4));
+    Position[] positions = creator.generateStartPositions();
+    for (int i = 0; i < positions.length; i++) {
+      System.out.println(String.format("position : %s", positions[i]));
     }
-
-    // 4 * 5 => 20
-    // 0 0 0 0 0
-    // 0 0 0 0 0
-    // 0 0 0 0 0
-    // 0 0 0 0 0
-
-    /*
-     * 5의 배수가 되는 지점 x
-     * 이미 생성되어 있는 지점에 선을 그을 때 x
-     * 사다리 크기에 따라 임의로 생성되는 선의 수를 결정
-     *
-    */
   }
 
-  public static int randInt(int min, int max) {
-    Random rand = new Random();
-    int randomNum = rand.nextInt((max - min) + 1) + min;
-    return randomNum;
+  public void testCountOfLine() {
+    int countOfLine = RandomLadderCreator.getCountOfLine(new NaturalNumber(20), 0.3);
+    assertEquals(6, countOfLine);
+
+    countOfLine = RandomLadderCreator.getCountOfLine(new NaturalNumber(5), 0.3);
+    assertEquals(1, countOfLine);
+  }
+
+  public void testConvertTotalPositionsToPosition() {
+    Position position = RandomLadderCreator.convertTotalPositionsToPosition(new NaturalNumber(8), new NaturalNumber(4), new NaturalNumber(5));
+    assertEquals(Position.create(2,3), position);
+  }
+
+  public void testPersonPosition() {
+    NaturalNumber positionOfPerson = RandomLadderCreator.getPositionOfPerson(new NaturalNumber(10), new NaturalNumber(3));
+    assertEquals(new NaturalNumber(1), positionOfPerson);
+  }
+
+  public void testHeightPosition() {
+    NaturalNumber positionOfHeight = RandomLadderCreator.getPositionOfHeight(new NaturalNumber(10), new NaturalNumber(3));
+    assertEquals(new NaturalNumber(4), positionOfHeight);
   }
 }

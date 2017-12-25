@@ -42,4 +42,12 @@ class Position {
   public int hashCode() {
     return Objects.hash(height, nthOfPerson);
   }
+
+  @Override
+  public String toString() {
+    return "Position{" +
+        "height=" + height +
+        ", nthOfPerson=" + nthOfPerson +
+        '}';
+  }
 }
