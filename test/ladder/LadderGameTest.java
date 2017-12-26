@@ -2,7 +2,7 @@ package ladder;
 
 import core.NaturalNumber;
 import junit.framework.TestCase;
-import ladder.LadderGame.LadderType;
+import ladder.creator.LadderCreatorFactory.LadderType;
 
 public class LadderGameTest extends TestCase {
 

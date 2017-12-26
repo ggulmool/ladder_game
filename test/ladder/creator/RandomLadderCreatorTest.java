@@ -1,7 +1,8 @@
-package ladder;
+package ladder.creator;
 
 import core.NaturalNumber;
 import junit.framework.TestCase;
+import ladder.Position;
 
 public class RandomLadderCreatorTest extends TestCase {
 

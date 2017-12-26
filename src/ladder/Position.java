@@ -3,7 +3,7 @@ package ladder;
 import core.NaturalNumber;
 import java.util.Objects;
 
-class Position {
+public class Position {
 
   private NaturalNumber height;
   private NaturalNumber nthOfPerson;
@@ -25,11 +25,11 @@ class Position {
     return new Position(NaturalNumber.createFromArrayIndex(height), NaturalNumber.createFromArrayIndex(nthOfPerson));
   }
 
-  NaturalNumber getHeight() {
+  public NaturalNumber getHeight() {
     return height;
   }
 
-  NaturalNumber getNthOfPerson() {
+  public NaturalNumber getNthOfPerson() {
     return nthOfPerson;
   }
 

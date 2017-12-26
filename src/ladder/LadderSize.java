@@ -2,7 +2,7 @@ package ladder;
 
 import core.NaturalNumber;
 
-class LadderSize {
+public class LadderSize {
 
   private NaturalNumber height;
   private NaturalNumber noOfPerson;
@@ -24,7 +24,7 @@ class LadderSize {
     return new LadderSize(new NaturalNumber(height), new NaturalNumber(noOfPerson));
   }
 
-  static LadderSize create(NaturalNumber height, NaturalNumber nthOfPersion) {
+  public static LadderSize create(NaturalNumber height, NaturalNumber nthOfPersion) {
     return new LadderSize(height, nthOfPersion);
   }
 
@@ -45,16 +45,16 @@ class LadderSize {
     return Position.create(getPositionOfHeight(currentTotalPosition), getPositionOfPerson(currentTotalPosition));
   }
 
-  int getCountOfLine(double ratio) {
+  public int getCountOfLine(double ratio) {
     NaturalNumber totalPositions = getTotalPosition();
     return (int) (totalPositions.getNumber() * ratio);
   }
 
-  NaturalNumber getTotalPosition() {
+  public NaturalNumber getTotalPosition() {
     return height.multiply(noOfPerson);
   }
 
-  boolean isMultipleOfPerson(NaturalNumber randomPosition) {
+  public boolean isMultipleOfPerson(NaturalNumber randomPosition) {
     int remainder = randomPosition.getNumber() % noOfPerson.getNumber();
     if (remainder == 0) {
       return true;

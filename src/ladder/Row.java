@@ -2,17 +2,17 @@ package ladder;
 
 import core.NaturalNumber;
 
-class Row {
+public class Row {
   private Node[] nodes;
 
-  Row(NaturalNumber noOfPerson) {
+  public Row(NaturalNumber noOfPerson) {
     nodes = new Node[noOfPerson.getNumber()];
     for (int i = 0; i < nodes.length; i++) {
       nodes[i] = Node.createCenterNode();
     }
   }
 
-  void drawLine(NaturalNumber startPosition) {
+  public void drawLine(NaturalNumber startPosition) {
     int startIndex = startPosition.toArrayIndex();
     if (isOverNoOfPersons(startIndex)) {
       throw new IllegalArgumentException(String.format("시작점 Index값은 %d 미만이어야 합니다. 현재 값 : %d", nodes.length - 1, startIndex));

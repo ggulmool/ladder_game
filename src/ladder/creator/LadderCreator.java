@@ -1,6 +1,7 @@
-package ladder;
+package ladder.creator;
 
 import core.NaturalNumber;
+import ladder.Row;
 
 public interface LadderCreator {
 
