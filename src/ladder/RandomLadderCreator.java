@@ -1,6 +1,7 @@
 package ladder;
 
 import core.NaturalNumber;
+import java.util.Arrays;
 import java.util.Random;
 
 class RandomLadderCreator {
@@ -42,6 +43,43 @@ class RandomLadderCreator {
     return toPositions(numbers);
   }
 
+  NaturalNumber[] generateRandomPositions() {
+    NaturalNumber totalPositions = ladderSize.getTotalPosition();
+    int countOfLine = ladderSize.getCountOfLine(DEFAULT_LINE_RATIO);
+    NaturalNumber[] startPositions = new NaturalNumber[countOfLine];
+
+    int i = 0;
+    do {
+      NaturalNumber randomPosition = randInt(1, totalPositions.getNumber());
+      if (ladderSize.isMultipleOfPerson(randomPosition)) {
+        continue;
+      }
+      if (isExisted(startPositions, randomPosition)) {
+        continue;
+      }
+
+      if (isExisted(startPositions, new NaturalNumber(randomPosition.getNumber() +  1))) {
+        continue;
+      }
+
+      if (randomPosition.equals(new NaturalNumber(1))) {
+        startPositions[i] = randomPosition;
+        System.out.println(String.format("random position : %s", startPositions[i]));
+        i++;
+      } else {
+        if (isExisted(startPositions, new NaturalNumber(randomPosition.toArrayIndex()))) {
+          continue;
+        }
+
+        startPositions[i] = randomPosition;
+        System.out.println(String.format("random position : %s", startPositions[i]));
+        i++;
+      }
+    } while (i < countOfLine);
+
+    return startPositions;
+  }
+
   Position[] toPositions(NaturalNumber[] positions) {
     Position[] startPositions = new Position[positions.length];
     for (int i = 0; i < positions.length; i++) {
@@ -50,19 +88,17 @@ class RandomLadderCreator {
     return startPositions;
   }
 
-  NaturalNumber[] generateRandomPositions() {
-    NaturalNumber totalPositions = ladderSize.getTotalPosition();
-    int countOfLine = ladderSize.getCountOfLine(DEFAULT_LINE_RATIO);
-    NaturalNumber[] startPositions = new NaturalNumber[countOfLine];
-    for (int i = 0; i < startPositions.length; i++) {
-      startPositions[i] = randInt(1, totalPositions.getNumber());
-      System.out.println(String.format("random position : %s", startPositions[i]));
-    }
-    return startPositions;
-  }
-
   static NaturalNumber randInt(int min, int max) {
     Random rand = new Random();
     return new NaturalNumber(rand.nextInt((max - min) + 1) + min);
+  }
+
+  static boolean isExisted(NaturalNumber[] startPositions, NaturalNumber randomPosition) {
+    for (NaturalNumber position : startPositions) {
+      if (randomPosition.equals(position)) {
+        return true;
+      }
+    }
+    return false;
   }
 }

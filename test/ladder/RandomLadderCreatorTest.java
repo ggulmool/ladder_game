@@ -12,4 +12,10 @@ public class RandomLadderCreatorTest extends TestCase {
       System.out.println(String.format("position : %s", positions[i]));
     }
   }
+
+  public void testIsExisted() {
+    NaturalNumber[] startPositions = {new NaturalNumber(2), new NaturalNumber(3)};
+    assertTrue(RandomLadderCreator.isExisted(startPositions, new NaturalNumber(2)));
+    assertFalse(RandomLadderCreator.isExisted(startPositions, new NaturalNumber(4)));
+  }
 }
