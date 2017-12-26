@@ -12,7 +12,7 @@ public class RandomLadderCreator implements LadderCreator {
   private LadderSize ladderSize;
   private Row[] rows;
 
-  RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+  public RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
     this.ladderSize = LadderSize.create(height, noOfPerson);
     rows = new Row[height.getNumber()];
 

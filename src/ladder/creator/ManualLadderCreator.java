@@ -7,7 +7,7 @@ public class ManualLadderCreator implements LadderCreator {
 
   private Row[] rows;
 
-  ManualLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+  public ManualLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
     rows = new Row[height.getNumber()];
 
     for (int i = 0; i < height.getNumber(); i++) {

@@ -20,7 +20,6 @@ class LadderRunner {
     return nthOfPerson;
   }
 
-
   static String generate(Row[] rows, Position position) {
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < rows.length; i++) {

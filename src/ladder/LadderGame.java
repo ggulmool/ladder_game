@@ -2,15 +2,13 @@ package ladder;
 
 import core.NaturalNumber;
 import ladder.creator.LadderCreator;
-import ladder.creator.LadderCreatorFactory;
-import ladder.creator.LadderCreatorFactory.LadderType;
 
 class LadderGame {
 
   private LadderCreator ladderCreator;
 
-  LadderGame(NaturalNumber height, NaturalNumber noOfPerson, LadderType ladderType) {
-    ladderCreator = LadderCreatorFactory.newLadderCreator(height, noOfPerson, ladderType);
+  public LadderGame(LadderCreator ladderCreator) {
+    this.ladderCreator = ladderCreator;
   }
 
   void drawLine(NaturalNumber height, NaturalNumber startPosition) {

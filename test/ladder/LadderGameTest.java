@@ -2,18 +2,17 @@ package ladder;
 
 import core.NaturalNumber;
 import junit.framework.TestCase;
-import ladder.creator.LadderCreatorFactory.LadderType;
 
 public class LadderGameTest extends TestCase {
 
   public void testRunBigLadder() {
-    LadderGame ladderGame = new LadderGame(new NaturalNumber(10), new NaturalNumber(6), LadderType.RANDOM);
+    LadderGame ladderGame = LadderGameFactory.randomLadderGame(new NaturalNumber(10), new NaturalNumber(6));
     Marker result = ladderGame.run(new Marker(2));
     System.out.println(result);
   }
 
   public void testRunWhenRandomLadder() {
-    LadderGame ladderGame = new LadderGame(new NaturalNumber(3), new NaturalNumber(4), LadderType.RANDOM);
+    LadderGame ladderGame = LadderGameFactory.randomLadderGame(new NaturalNumber(3), new NaturalNumber(4));
     Marker result = ladderGame.run(new Marker(2));
     System.out.println(result);
   }
@@ -22,7 +21,7 @@ public class LadderGameTest extends TestCase {
     // 1 -1 0 0
     // 0 1 -1 0
     // 0 0 1 -1
-    LadderGame ladderGame = new LadderGame(new NaturalNumber(3), new NaturalNumber(4), LadderType.MANUAL);
+    LadderGame ladderGame = LadderGameFactory.manualLadderGame(new NaturalNumber(3), new NaturalNumber(4));
     ladderGame.drawLine(new NaturalNumber(1), new NaturalNumber(1));
     ladderGame.drawLine(new NaturalNumber(2), new NaturalNumber(2));
     ladderGame.drawLine(new NaturalNumber(3), new NaturalNumber(3));
@@ -35,7 +34,7 @@ public class LadderGameTest extends TestCase {
 
   public void testDrawLineWhenOverNoOfRows() {
     try {
-      LadderGame ladderGame = new LadderGame(new NaturalNumber(3), new NaturalNumber(4), LadderType.MANUAL);
+      LadderGame ladderGame = LadderGameFactory.manualLadderGame(new NaturalNumber(3), new NaturalNumber(4));
       ladderGame.drawLine(new NaturalNumber(4), new NaturalNumber(4));
       fail("IllegalArgumentException 에러가 발생해야 한다.");
     } catch (IllegalArgumentException e) {
