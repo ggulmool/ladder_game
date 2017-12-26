@@ -2,7 +2,7 @@ package ladder;
 
 import core.NaturalNumber;
 
-class ManualLadderCreator {
+public class ManualLadderCreator implements LadderCreator {
 
   private Row[] rows;
 
@@ -14,7 +14,8 @@ class ManualLadderCreator {
     }
   }
 
-  void drawLine(NaturalNumber height, NaturalNumber startPosition) {
+  @Override
+  public void drawLine(NaturalNumber height, NaturalNumber startPosition) {
     if (isOverHeight(height)) {
       throw new IllegalArgumentException(
           String.format("사다리 최대 높이를 넘어섰습니다.현재 값은 : %d", height.getNumber()));
@@ -23,11 +24,12 @@ class ManualLadderCreator {
     rows[height.toArrayIndex()].drawLine(startPosition);
   }
 
-  private boolean isOverHeight(NaturalNumber height) {
-    return height.toArrayIndex() > rows.length - 1;
-  }
-
+  @Override
   public Row[] getLadder() {
     return this.rows;
+  }
+
+  private boolean isOverHeight(NaturalNumber height) {
+    return height.toArrayIndex() > rows.length - 1;
   }
 }
