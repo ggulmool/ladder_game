@@ -1,7 +1,6 @@
 package ladder;
 
 import core.NaturalNumber;
-import java.util.Arrays;
 import java.util.Random;
 
 class RandomLadderCreator {
@@ -10,14 +9,17 @@ class RandomLadderCreator {
   private LadderSize ladderSize;
   private Row[] rows;
 
-  RandomLadderCreator(LadderSize ladderSize) {
-    NaturalNumber height = ladderSize.getHeight();
-    NaturalNumber noOfPerson = ladderSize.getNoOfPerson();
-    this.ladderSize = ladderSize;
+  RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+    this.ladderSize = LadderSize.create(height, noOfPerson);
     rows = new Row[height.getNumber()];
 
     for (int i = 0; i < height.getNumber(); i++) {
       rows[i] = new Row(noOfPerson);
+    }
+
+    Position[] startPositions = generateStartPositions();
+    for (Position position : startPositions) {
+      drawLine(position.getHeight(), position.getNthOfPerson());
     }
   }
 

@@ -11,9 +11,11 @@ class LadderRunner {
   Marker run(Marker nthOfPerson) {
     for (int i = 0; i < rows.length; i++) {
       Row row = rows[i];
+      System.out.println("Before : ");
+      System.out.println(generate(rows, Position.createFromArrayIndex(i, nthOfPerson.toArrayIndex())));
       nthOfPerson = row.move(nthOfPerson);
-      String result = generate(rows, Position.createFromArrayIndex(i, nthOfPerson.toArrayIndex()));
-      System.out.println(result);
+      System.out.println("After : ");
+      System.out.println(generate(rows, Position.createFromArrayIndex(i, nthOfPerson.toArrayIndex())));
     }
     return nthOfPerson;
   }

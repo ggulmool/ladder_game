@@ -25,6 +25,14 @@ class Position {
     return new Position(NaturalNumber.createFromArrayIndex(height), NaturalNumber.createFromArrayIndex(nthOfPerson));
   }
 
+  NaturalNumber getHeight() {
+    return height;
+  }
+
+  NaturalNumber getNthOfPerson() {
+    return nthOfPerson;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
