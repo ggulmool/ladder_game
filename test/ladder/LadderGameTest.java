@@ -11,6 +11,16 @@ public class LadderGameTest extends TestCase {
     System.out.println(result);
   }
 
+  public void testRunWhenRandomLadderAndDrawLine() {
+    try {
+      LadderGame ladderGame = LadderGameFactory.randomLadderGame(new NaturalNumber(10), new NaturalNumber(6));
+      ladderGame.drawLine(new NaturalNumber(1), new NaturalNumber(1));
+      fail();
+    } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+
   public void testRunWhenRandomLadder() {
     LadderGame ladderGame = LadderGameFactory.randomLadderGame(new NaturalNumber(3), new NaturalNumber(4));
     Marker result = ladderGame.run(new Marker(2));

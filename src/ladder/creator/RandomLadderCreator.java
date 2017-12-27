@@ -4,45 +4,25 @@ import core.NaturalNumber;
 import java.util.Random;
 import ladder.LadderSize;
 import ladder.Position;
-import ladder.Row;
 
-public class RandomLadderCreator implements LadderCreator {
+public class RandomLadderCreator extends ManualLadderCreator implements LadderCreator {
 
   private static final double DEFAULT_LINE_RATIO = 0.3;
   private LadderSize ladderSize;
-  private Row[] rows;
 
   public RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+    super(height, noOfPerson);
     this.ladderSize = LadderSize.create(height, noOfPerson);
-    rows = new Row[height.getNumber()];
-
-    for (int i = 0; i < height.getNumber(); i++) {
-      rows[i] = new Row(noOfPerson);
-    }
 
     Position[] startPositions = generateStartPositions();
     for (Position position : startPositions) {
-      drawLine(position.getHeight(), position.getNthOfPerson());
+      super.drawLine(position.getHeight(), position.getNthOfPerson());
     }
   }
 
   @Override
   public void drawLine(NaturalNumber height, NaturalNumber startPosition) {
-    if (isOverHeight(height)) {
-      throw new IllegalArgumentException(
-          String.format("사다리 최대 높이를 넘어섰습니다.현재 값은 : %d", height.getNumber()));
-    }
-
-    rows[height.toArrayIndex()].drawLine(startPosition);
-  }
-
-  @Override
-  public Row[] getLadder() {
-    return this.rows;
-  }
-
-  private boolean isOverHeight(NaturalNumber height) {
-    return height.toArrayIndex() > rows.length - 1;
+    throw new UnsupportedOperationException("RandomLadderCreator에서는 drawLine 메서드를 호출할 수 없습니다.");
   }
 
   Position[] generateStartPositions() {

@@ -22,8 +22,20 @@
 - <a href="https://www.youtube.com/watch?v=IPhG75TmGiA" target="_blank">step3-3 </a>
 - <a href="https://www.youtube.com/watch?v=ULVkcOnimQk" target="_blank">step3-4 </a>
 
-### 4.
+### 4. 객체 추출 리팩토링
 - <a href="https://www.youtube.com/watch?v=" target="_blank">step4-1 </a>
 - <a href="https://www.youtube.com/watch?v=" target="_blank">step4-2 </a>
 - <a href="https://www.youtube.com/watch?v=" target="_blank">step4-3 </a>
 - <a href="https://www.youtube.com/watch?v=" target="_blank">step4-4 </a>
+
+### 5. 디버깅 로그메시지 출력기능
+- <a href="https://www.youtube.com/watch?v=" target="_blank">step5-1 </a>
+- <a href="https://www.youtube.com/watch?v=" target="_blank">step5-2 </a>
+- <a href="https://www.youtube.com/watch?v=" target="_blank">step5-3 </a>
+
+### 6. 클래스 분리 및 선 Random 생성
+- <a href="https://www.youtube.com/watch?v=" target="_blank">step6-1 </a>
+- <a href="https://www.youtube.com/watch?v=" target="_blank">step6-2 </a>
+- <a href="https://www.youtube.com/watch?v=" target="_blank">step6-3 </a>
+- <a href="https://www.youtube.com/watch?v=" target="_blank">step6-4 </a>
+- <a href="https://www.youtube.com/watch?v=" target="_blank">step6-5 </a>
