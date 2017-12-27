@@ -1,18 +1,24 @@
 package ladder.creator;
 
 import core.NaturalNumber;
+import ladder.LadderSize;
 import ladder.Row;
 
 public class ManualLadderCreator implements LadderCreator {
 
   private Row[] rows;
+  private LadderSize ladderSize;
 
   public ManualLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
     rows = new Row[height.getNumber()];
-
+    ladderSize = LadderSize.create(height, noOfPerson);
     for (int i = 0; i < height.getNumber(); i++) {
       rows[i] = new Row(noOfPerson);
     }
+  }
+
+  public LadderSize getLadderSize() {
+    return ladderSize;
   }
 
   @Override

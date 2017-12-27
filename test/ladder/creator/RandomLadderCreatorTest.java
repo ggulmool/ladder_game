@@ -7,7 +7,8 @@ import ladder.Position;
 public class RandomLadderCreatorTest extends TestCase {
 
   public void testGenerateStartPositions() {
-    RandomLadderCreator creator = new RandomLadderCreator(new NaturalNumber(3), new NaturalNumber(4));
+    ManualLadderCreator manualLadderCreator = new ManualLadderCreator(new NaturalNumber(3), new NaturalNumber(4));
+    RandomLadderCreator creator = new RandomLadderCreator(manualLadderCreator);
     Position[] positions = creator.generateStartPositions();
     for (int i = 0; i < positions.length; i++) {
       System.out.println(String.format("position : %s", positions[i]));
