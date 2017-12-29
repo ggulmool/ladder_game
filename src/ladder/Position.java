@@ -13,8 +13,8 @@ public class Position {
     this.nthOfPerson = nthOfPerson;
   }
 
-  static Position create(int height, int nthOfPersion) {
-    return create(new NaturalNumber(height), new NaturalNumber(nthOfPersion));
+  static Position create(int height, int nthOfPerson) {
+    return create(new NaturalNumber(height), new NaturalNumber(nthOfPerson));
   }
 
   static Position create(NaturalNumber height, NaturalNumber nthOfPersion) {

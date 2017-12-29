@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 public class LadderGameTest extends TestCase {
 
   public void testRunBigLadder() {
-    LadderGame ladderGame = LadderGameFactory.randomLadderGame(new NaturalNumber(10), new NaturalNumber(6));
+    LadderGame ladderGame = LadderGameFactory.randomLadderGame(new NaturalNumber(5), new NaturalNumber(6));
     Marker result = ladderGame.run(new Marker(2));
     System.out.println(result);
   }

@@ -35,7 +35,7 @@ public class NaturalNumber {
     if (this == o) {
       return true;
     }
-    if (o == null || getClass() != o.getClass()) {
+    if (!(o instanceof NaturalNumber)) {
       return false;
     }
     NaturalNumber that = (NaturalNumber) o;
@@ -44,6 +44,7 @@ public class NaturalNumber {
 
   @Override
   public int hashCode() {
+
     return Objects.hash(number);
   }
 
