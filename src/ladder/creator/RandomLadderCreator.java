@@ -1,6 +1,8 @@
 package ladder.creator;
 
 import core.NaturalNumber;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import ladder.LadderSize;
 import ladder.Position;
@@ -16,7 +18,7 @@ public class RandomLadderCreator implements LadderCreator {
   public RandomLadderCreator(LadderCreator ladderCreator) {
     this.ladderCreator = ladderCreator;
     this.ladderSize = ladderCreator.getLadderSize();
-    Position[] startPositions = generateStartPositions();
+    List<Position> startPositions = generateStartPositions();
     for (Position position : startPositions) {
       ladderCreator.drawLine(position.getHeight(), position.getNthOfPerson());
     }
@@ -37,15 +39,16 @@ public class RandomLadderCreator implements LadderCreator {
     return this.ladderSize;
   }
 
-  Position[] generateStartPositions() {
-    RandomNaturalNumber[] numbers = generateRandomPositions();
+  List<Position> generateStartPositions() {
+    List<RandomNaturalNumber> numbers = generateRandomPositions();
     return toPositions(numbers);
   }
 
-  RandomNaturalNumber[] generateRandomPositions() {
+  List<RandomNaturalNumber> generateRandomPositions() {
     NaturalNumber totalPositions = ladderSize.getTotalPosition();
     int countOfLine = ladderSize.getCountOfLine(DEFAULT_LINE_RATIO);
-    RandomNaturalNumber[] startPositions = new RandomNaturalNumber[countOfLine];
+
+    List<RandomNaturalNumber> randomPositions = new ArrayList<>();
 
     int i = 0;
     do {
@@ -53,51 +56,43 @@ public class RandomLadderCreator implements LadderCreator {
       if (ladderSize.isMultipleOfPerson(randomPosition)) {
         continue;
       }
-      if (isExisted(startPositions, randomPosition)) {
+
+      if (randomPositions.contains(randomPosition)) {
         continue;
       }
 
-      if (isExisted(startPositions, new RandomNaturalNumber(randomPosition.getNumber() +  1))) {
+      if (randomPositions.contains(new RandomNaturalNumber(randomPosition.getNumber() +  1))) {
         continue;
       }
 
       if (randomPosition.equals(new NaturalNumber(1))) {
-        startPositions[i] = randomPosition;
-        System.out.println(String.format("random position : %s", startPositions[i]));
+        randomPositions.add(randomPosition);
+        System.out.println(String.format("random position : %s", randomPosition));
         i++;
       } else {
-        if (isExisted(startPositions, new RandomNaturalNumber(randomPosition.toArrayIndex()))) {
+        if (randomPositions.contains(new RandomNaturalNumber(randomPosition.toArrayIndex()))) {
           continue;
         }
 
-        startPositions[i] = randomPosition;
-        System.out.println(String.format("random position : %s", startPositions[i]));
+        randomPositions.add(randomPosition);
+        System.out.println(String.format("random position : %s", randomPosition));
         i++;
       }
     } while (i < countOfLine);
 
-    return startPositions;
+    return randomPositions;
   }
 
-  Position[] toPositions(RandomNaturalNumber[] positions) {
-    Position[] startPositions = new Position[positions.length];
-    for (int i = 0; i < positions.length; i++) {
-      startPositions[i] = ladderSize.getPosition(positions[i]);
+  List<Position> toPositions(List<RandomNaturalNumber> randomNumbers) {
+    List<Position> positions = new ArrayList<>(randomNumbers.size());
+    for (RandomNaturalNumber randomNumber : randomNumbers) {
+      positions.add(ladderSize.getPosition(randomNumber));
     }
-    return startPositions;
+    return positions;
   }
 
   static RandomNaturalNumber randInt(int min, int max) {
     Random rand = new Random();
     return new RandomNaturalNumber(rand.nextInt((max - min) + 1) + min);
-  }
-
-  static boolean isExisted(NaturalNumber[] startPositions, NaturalNumber randomPosition) {
-    for (NaturalNumber position : startPositions) {
-      if (randomPosition.equals(position)) {
-        return true;
-      }
-    }
-    return false;
   }
 }
