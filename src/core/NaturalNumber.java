@@ -5,6 +5,7 @@ import java.util.Objects;
 public class NaturalNumber {
 
   private static final int INTERVAL = 1;
+  private static final int FIRST_OF_NATURAL_NUMBER = 1;
   private int number;
 
   public NaturalNumber(int number) {
@@ -28,6 +29,10 @@ public class NaturalNumber {
 
   public static NaturalNumber createFromArrayIndex(int index) {
     return new NaturalNumber(index + INTERVAL);
+  }
+
+  public boolean isFirst() {
+    return this.getNumber() == FIRST_OF_NATURAL_NUMBER;
   }
 
   @Override

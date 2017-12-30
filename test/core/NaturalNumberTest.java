@@ -1,6 +1,7 @@
 package core;
 
 import junit.framework.TestCase;
+import ladder.RandomNaturalNumber;
 
 public class NaturalNumberTest extends TestCase {
 
@@ -32,5 +33,13 @@ public class NaturalNumberTest extends TestCase {
     NaturalNumber number = new NaturalNumber(3);
     NaturalNumber actual = number.multiply(new NaturalNumber(4));
     assertEquals(new NaturalNumber(12), actual);
+  }
+
+  public void testIsFirst() {
+    NaturalNumber number = new NaturalNumber(1);
+    assertTrue(number.isFirst());
+
+    number = new NaturalNumber(2);
+    assertFalse(number.isFirst());
   }
 }

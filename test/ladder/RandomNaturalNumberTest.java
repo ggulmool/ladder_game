@@ -26,8 +26,9 @@ public class RandomNaturalNumberTest extends TestCase {
     assertFalse(randomNumber.isMultipleOfPerson(3));
   }
 
-  public void testEquals() {
+  public void testRandomNumberEquals() {
     assertTrue(new RandomNaturalNumber(1).equals(new NaturalNumber(1)));
     assertTrue(new NaturalNumber(1).equals(new RandomNaturalNumber(1)));
   }
+
 }
