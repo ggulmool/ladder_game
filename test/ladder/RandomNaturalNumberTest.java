@@ -1,6 +1,7 @@
 package ladder;
 
 import core.NaturalNumber;
+import java.util.List;
 import junit.framework.TestCase;
 
 public class RandomNaturalNumberTest extends TestCase {
@@ -31,4 +32,15 @@ public class RandomNaturalNumberTest extends TestCase {
     assertTrue(new NaturalNumber(1).equals(new RandomNaturalNumber(1)));
   }
 
+  public void testCheckedNaturalNumbers() {
+    RandomNaturalNumber randomNumber = new RandomNaturalNumber(2);
+    List<NaturalNumber> naturalNumbers = randomNumber.checkedNaturalNumbers(new NaturalNumber(3));
+    assertTrue(naturalNumbers.size() == 3);
+  }
+
+  public void testCheckNaturalNumbersWheFirst() {
+    RandomNaturalNumber randomNumber = new RandomNaturalNumber(4);
+    List<NaturalNumber> naturalNumbers = randomNumber.checkedNaturalNumbers(new NaturalNumber(3));
+    assertTrue(naturalNumbers.size() == 2);
+  }
 }

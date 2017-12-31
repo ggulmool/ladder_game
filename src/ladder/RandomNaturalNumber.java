@@ -1,6 +1,8 @@
 package ladder;
 
 import core.NaturalNumber;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RandomNaturalNumber extends NaturalNumber {
 
@@ -27,5 +29,25 @@ public class RandomNaturalNumber extends NaturalNumber {
       return true;
     }
     return false;
+  }
+
+  public RandomNaturalNumber before() {
+    return new RandomNaturalNumber(toArrayIndex());
+  }
+
+  public RandomNaturalNumber next() {
+    return new RandomNaturalNumber(getNumber() + 1);
+  }
+
+  public List<NaturalNumber> checkedNaturalNumbers(NaturalNumber noOfPerson) {
+    List<NaturalNumber> naturalNumbers = new ArrayList<>();
+
+    int remainder = this.getNumber() % noOfPerson.getNumber();
+    if (!isFirst(remainder)) {
+      naturalNumbers.add(before());
+    }
+    naturalNumbers.add(this);
+    naturalNumbers.add(next());
+    return naturalNumbers;
   }
 }

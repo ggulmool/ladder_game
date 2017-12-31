@@ -47,7 +47,6 @@ public class RandomLadderCreator implements LadderCreator {
   List<RandomNaturalNumber> generateRandomPositions() {
     NaturalNumber totalPositions = ladderSize.getTotalPosition();
     int countOfLine = ladderSize.getCountOfLine(DEFAULT_LINE_RATIO);
-
     List<RandomNaturalNumber> randomPositions = new ArrayList<>();
 
     do {
@@ -56,25 +55,35 @@ public class RandomLadderCreator implements LadderCreator {
         continue;
       }
 
-      if (randomPositions.contains(randomPosition)) {
-        continue;
-      }
+      // 아래 로직을 Collection비교를 통한 방법으로 리팩토링
+      List<NaturalNumber> checkedNaturalNumbers = randomPosition.checkedNaturalNumbers(ladderSize.getNoOfPerson());
+      checkedNaturalNumbers.retainAll(randomPositions);
 
-      if (randomPositions.contains(new RandomNaturalNumber(randomPosition.getNumber() +  1))) {
-        continue;
-      }
-
-      if (randomPosition.isFirst()) {
-        randomPositions.add(randomPosition);
-        System.out.println(String.format("random position : %s", randomPosition));
-      } else {
-        if (randomPositions.contains(new RandomNaturalNumber(randomPosition.toArrayIndex()))) {
-          continue;
-        }
-
+      // 체크넘버에 포함되어 있지 않으면 추가 (retainAll은 교집합 추출)
+      if (checkedNaturalNumbers.isEmpty()) {
         randomPositions.add(randomPosition);
         System.out.println(String.format("random position : %s", randomPosition));
       }
+
+//      if (randomPositions.contains(randomPosition)) {
+//        continue;
+//      }
+//
+//      if (randomPositions.contains(new RandomNaturalNumber(randomPosition.getNumber() +  1))) {
+//        continue;
+//      }
+//
+//      if (randomPosition.isFirst()) {
+//        randomPositions.add(randomPosition);
+//        System.out.println(String.format("random position : %s", randomPosition));
+//      } else {
+//        if (randomPositions.contains(new RandomNaturalNumber(randomPosition.toArrayIndex()))) {
+//          continue;
+//        }
+//
+//        randomPositions.add(randomPosition);
+//        System.out.println(String.format("random position : %s", randomPosition));
+//      }
     } while (randomPositions.size() < countOfLine);
 
     return randomPositions;
@@ -84,6 +93,7 @@ public class RandomLadderCreator implements LadderCreator {
     List<Position> positions = new ArrayList<>(randomNumbers.size());
     for (RandomNaturalNumber randomNumber : randomNumbers) {
       positions.add(ladderSize.getPosition(randomNumber));
+      //System.out.println("ladderSize.getPosition(randomNumber) = " + ladderSize.getPosition(randomNumber));
     }
     return positions;
   }

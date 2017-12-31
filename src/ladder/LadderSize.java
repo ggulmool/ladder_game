@@ -12,11 +12,11 @@ public class LadderSize {
     this.noOfPerson = noOfPerson;
   }
 
-  NaturalNumber getHeight() {
+  public NaturalNumber getHeight() {
     return height;
   }
 
-  NaturalNumber getNoOfPerson() {
+  public NaturalNumber getNoOfPerson() {
     return noOfPerson;
   }
 
@@ -30,7 +30,7 @@ public class LadderSize {
 
   public Position getPosition(RandomNaturalNumber randomNaturalNumber) {
     int positionOfHeight = randomNaturalNumber.getPositionOfHeight(noOfPerson.getNumber());
-    int positionOfPerson = randomNaturalNumber.getPositionOfHeight(noOfPerson.getNumber());
+    int positionOfPerson = randomNaturalNumber.getPositionOfPerson(noOfPerson.getNumber());
     return Position.create(positionOfHeight, positionOfPerson);
   }
 
